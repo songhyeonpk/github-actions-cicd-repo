@@ -30,7 +30,7 @@ jobs:
 
       # Gradlew 생행 권한 허용
       - name: Grant Execute Permission for Gradlew
-        run: chmod -x ./gradlew
+        run: chmod +x ./gradlew
 
       # Gradle 빌드
       - name: Build with Gradle
