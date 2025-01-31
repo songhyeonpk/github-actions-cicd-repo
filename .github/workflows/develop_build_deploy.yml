@@ -85,6 +85,6 @@ jobs:
           envs: IMAGE_FULL_PATH, DOCKERHUB_IMAGE_NAME # docker-compose.yml 에서 사용할 환경 변수
           debug: true
           script: |
-            echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }} | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+            echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             docker compose up -d
             docker image prune -a -f
