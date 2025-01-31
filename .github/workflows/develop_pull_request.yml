@@ -7,27 +7,27 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-  strategy:
-    matrix:
-      java-version: [ 17 ]
-      distribution: [ 'temurin' ]
+    strategy:
+      matrix:
+        java-version: [ 17 ]
+        distribution: [ 'temurin' ]
 
-  steps:
-    # 체크아웃
-    - name: Checkout
-      uses: actions/checkout@v4
+    steps:
+      # 체크아웃
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    # JDK 17 세팅
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        java-version: ${{ matrix.java-version }}
-        distribution: ${{ matrix.distribution }}
+      # JDK 17 세팅
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: ${{ matrix.distribution }}
 
-    # Gradlew 생행 권한 허용
-    - name: Grant Execute Permission for Gradlew
-      run: chmod -x ./gradlew
+      # Gradlew 생행 권한 허용
+      - name: Grant Execute Permission for Gradlew
+        run: chmod -x ./gradlew
 
-    # Gradle 빌드
-    - name: Build with Gradle
-      run: ./gradlew build
+      # Gradle 빌드
+      - name: Build with Gradle
+        run: ./gradlew build
