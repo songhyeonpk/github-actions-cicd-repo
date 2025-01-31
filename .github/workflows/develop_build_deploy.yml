@@ -48,7 +48,7 @@ jobs:
         id: metadata
         uses: docker/metadata-action@v5.5.0
         env:
-          DOCKERHUB_IMAGE_FULL_NAME: ${{ DOCKERHUB_USERNAME }}/${{ DOCKERHUB_IMAGE_NAME }}
+          DOCKERHUB_IMAGE_FULL_NAME: ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_IMAGE_NAME }}
         with:
           images: ${{ env.DOCKERHUB_IMAGE_FULL_NAME }}
           tags: latest
