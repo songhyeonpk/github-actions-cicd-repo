@@ -1,6 +1,9 @@
 spring:
   profiles:
-    active: ${PROFILES_ACTIVE:local}
+    group:
+      test: "test"
+      local: "local, datasource"
+      dev: "dev, datasource"
     include:
-      - datasource
       - redis
+
