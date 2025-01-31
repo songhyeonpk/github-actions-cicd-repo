@@ -31,6 +31,9 @@ jobs:
       - name: Grant Execute Permission for Gradlew
         run: chmod +x ./gradlew
 
-      # Gradle 빌드
-      - name: Build with Gradle
-        run: ./gradlew build
+      # Gradle setup
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: check
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
