@@ -24,6 +24,9 @@ jobs:
           java-version: ${{ matrix.java-version }}
           distribution: ${{ matrix.distribution }}
 
+      - name: Run container # 테스트 시에 레디스 필요
+        run: docker compose -f ./docker-compose-test.yml up -d
+
       # Gradlew 생행 권한 허용
       - name: Grant Execute Permission for Gradlew
         run: chmod +x ./gradlew
