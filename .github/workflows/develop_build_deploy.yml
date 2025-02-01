@@ -35,7 +35,13 @@ jobs:
 
       # Gradle 빌드
       - name: Build with Gradle
-        run: ./gradlew build --scan
+        id: gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: |
+            build
+            --scan
+          cache-read-only: ${{ github.ref != 'refs/heads/main' && github.ref != 'refs/heads/develop' }}
 
       # Dockerhub 로그인
       - name: Login to Dockerhub
