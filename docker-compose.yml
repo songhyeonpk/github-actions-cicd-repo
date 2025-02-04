@@ -1,13 +1,21 @@
 version: '3.8'
 
+networks:
+  my-network:
+    driver: bridge
+
+
 services:
   backend:
     image: ${IMAGE_FULL_PATH}
     container_name: ${DOCKERHUB_IMAGE_NAME}
     restart: always
+    ports:
+      - "8080:8080"
     environment:
       - TZ=Asia/Seoul
-    network_mode: host
+    networks:
+      - "my-network"
     env_file:
       - .env
 
@@ -18,15 +26,16 @@ services:
       - "6379:6379"
     environment:
       - TZ=Asia/Seoul
-    network_mode: host
+    networks:
+      - "my-network"
 
   nginx:
     image: "nginx:alpine"
     container_name: nginx
+    restart: always
     ports:
       - "80:80"
       - "443:443"
-    restart: always
     volumes:
       # nginx.conf 파일은 컨테이너 생성 시 자동으로 생성되는 기본 nginx.conf 파일을 그대로 사용
       # 기본 default.conf 파일을 커스텀한 default.conf 파일로 마운트
@@ -38,7 +47,8 @@ services:
       - certbot
     environment:
       - TZ=Asia/Seoul
-    network_mode: host
+    networks:
+      - "my-network"
 
   certbot:
     image: certbot/certbot
