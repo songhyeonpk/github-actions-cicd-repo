@@ -78,6 +78,18 @@ jobs:
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           remote_path: /home/ubuntu/
 
+      # EC2 서버로 default.conf 파일 복사
+      # docker-compose.yml 에서 nginx 컨테이너 실행 시 해당 파일과 마운트하기 위함
+      - name: Copy default.conf file to EC2
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: ./nginx
+          remote_host: ${{ secrets.EC2_HOST }}
+          remote_user: ${{ secrets.EC2_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: /home/ubuntu
+
       # EC2 배포
       - name: Deploy to EC2 Server
         uses: appleboy/ssh-action@v1.0.3
