@@ -2,8 +2,7 @@ spring:
   profiles:
     group:
       test: "test"
-      local: "local, datasource"
-      dev: "dev, datasource"
+      local: "local, datasource, storage"
+      dev: "dev, datasource, storage"
     include:
       - redis
-

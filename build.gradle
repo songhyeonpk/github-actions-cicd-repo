@@ -35,6 +35,10 @@ dependencies {
 	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
+	// AWS
+	implementation 'software.amazon.awssdk:s3:2.20.140' // 최신 버전 확인 후 적용
+	implementation 'software.amazon.awssdk:auth:2.20.140' // IAM 인증 관련
+	implementation 'software.amazon.awssdk:sts:2.20.140'  // STS (IAM Role 인증 필요시)
 
 }
 
