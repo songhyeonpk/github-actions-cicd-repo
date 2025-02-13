@@ -1,5 +1,7 @@
 package com.sh.cicd.common.consts;
 
+import java.util.Map;
+
 public class StaticConsts {
 
     public static final String AUTH_HEADER = "Authorization";
@@ -14,5 +16,11 @@ public class StaticConsts {
     public static final int INTERNAL_SERVER = 500;
     public static final int REQUEST_TIMEOUT = 408;
     public static final int TOO_MANY_REQUESTS = 429;
-
+    public static final Map<String, String> IMAGE_MIME_TYPES = Map.of(
+            "jpg", "image/jpeg",
+            "jpeg", "image/jpeg",
+            "png", "image/png",
+            "gif", "image/gif",
+            "webp", "image/webp"
+    );
 }
