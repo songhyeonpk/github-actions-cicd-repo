@@ -2,10 +2,11 @@ package com.sh.cicd.infrastructure.s3;
 
 import com.sh.cicd.common.utils.FileUtils;
 import com.sh.cicd.infrastructure.s3.dto.ImageUrlDto;
+import com.sh.cicd.infrastructure.s3.exception.S3NotFoundObjectException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+import software.amazon.awssdk.services.s3.model.*;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
@@ -50,5 +51,26 @@ public class S3Service {
         s3Presigner.close();
 
         return presignedPutObjectRequest.url().toString();
+    }
+
+    // 이미지 삭제
+    public void deleteImage(String imageKey) {
+        try {
+            // 요청한 imageKey 를 가진 객체가 존재하는지 확인
+            s3Client.headObject(HeadObjectRequest.builder()
+                    .bucket(s3Properties.getBucketName())
+                    .key(imageKey)
+                    .build());
+
+            // 이미지 삭제
+            DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
+                    .bucket(s3Properties.getBucketName())
+                    .key(imageKey)
+                    .build();
+
+            s3Client.deleteObject(deleteObjectRequest);
+        } catch (NoSuchKeyException e) {
+            throw S3NotFoundObjectException.NOT_FOUND_OBJECT;
+        }
     }
 }
