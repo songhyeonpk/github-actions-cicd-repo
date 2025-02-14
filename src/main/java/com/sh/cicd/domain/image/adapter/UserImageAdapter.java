@@ -18,5 +18,10 @@ public class UserImageAdapter {
                 .orElseThrow(() -> UserImageNotFoundException.USER_IMAGE_NOT_FOUND);
     }
 
+    public UserImageEntity queryUserImageByUserId(Long userId) {
+        return userImageRepository.findByUserId(userId)
+                .orElseThrow(() -> UserImageNotFoundException.USER_IMAGE_NOT_FOUND);
+    }
+
     public UserImageEntity save(UserImageEntity userImage) { return userImageRepository.save(userImage); }
 }

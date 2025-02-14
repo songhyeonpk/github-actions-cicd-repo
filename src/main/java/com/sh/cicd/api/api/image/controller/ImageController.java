@@ -4,6 +4,7 @@ import com.sh.cicd.api.api.image.dto.ImageDto;
 import com.sh.cicd.api.api.image.dto.ImageUrlResponse;
 import com.sh.cicd.api.api.image.dto.SuccessUserImageUploadRequest;
 import com.sh.cicd.api.api.image.usecase.GetPresignedUrlUseCase;
+import com.sh.cicd.api.api.image.usecase.ImageDeleteUseCase;
 import com.sh.cicd.api.api.image.usecase.ImageUploadSuccessUseCase;
 import com.sh.cicd.api.config.response.ApiResponse;
 import com.sh.cicd.api.config.response.SuccessResults;
@@ -21,6 +22,7 @@ public class ImageController {
 
     private final GetPresignedUrlUseCase getPresignedUrlUseCase;
     private final ImageUploadSuccessUseCase imageUploadSuccessUseCase;
+    private final ImageDeleteUseCase imageDeleteUseCase;
 
     // 유저 이미지 pre-signed URL 발급 요청
     @GetMapping("/users/{userId}/presigned-url")
@@ -38,5 +40,13 @@ public class ImageController {
             @PathVariable Long userId,
             @RequestBody SuccessUserImageUploadRequest request) {
         return ApiResponse.success(SuccessResults.CREATED, imageUploadSuccessUseCase.userUploadImageSuccess(userId, request.getImageKey()));
+    }
+
+    // 유저 이미지 삭제
+    @DeleteMapping("/users/{userId}")
+    @ResponseStatus(HttpStatus.OK)
+    public ApiResponse<ImageDto> deleteImageForUser(
+            @PathVariable Long userId) {
+        return ApiResponse.success(SuccessResults.DELETED, imageDeleteUseCase.deleteImageForUser(userId));
     }
 }

@@ -8,8 +8,8 @@ public enum SuccessResults {
 
     OK(HttpStatus.OK.value(), "리소스 조회에 성공했습니다."),
     CREATED(HttpStatus.CREATED.value(), "리소스 생성에 성공했습니다."),
-    UPDATED(HttpStatus.NO_CONTENT.value(), "리소스 업데이트에 성공했습니다."),
-    DELETED(HttpStatus.NO_CONTENT.value(), "리소스 삭제에 성공했습니다.");
+    UPDATED(HttpStatus.OK.value(), "리소스 업데이트에 성공했습니다."),
+    DELETED(HttpStatus.OK.value(), "리소스 삭제에 성공했습니다.");
 
     private final int status;
     private final String message;
