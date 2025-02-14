@@ -5,6 +5,8 @@ import com.sh.cicd.domain.user.domain.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import static com.sh.cicd.common.consts.StaticConsts.*;
+
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
@@ -24,4 +26,9 @@ public class UserImageEntity extends BaseTimeEntity {
     private String uri;
 
     private String objectKey;
+
+    public void delete() {
+        this.uri = IMAGE_DOMAIN + "/" + USER_DEFAULT_IMAGE;
+        this.objectKey = USER_DEFAULT_IMAGE;
+    }
 }

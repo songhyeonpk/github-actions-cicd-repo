@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.sh.cicd.common.consts.StaticConsts.IMAGE_DOMAIN;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -18,7 +20,7 @@ public class ImageDomainService {
 
     public String userImageUploadSuccess(Long userId, String imageKey) {
         UserEntity user = userAdapter.queryUser(userId);
-        String imageUrl = "https://sh-test-server-bucket.s3.ap-northeast-2.amazonaws.com" + "/" + imageKey;
+        String imageUrl = IMAGE_DOMAIN + "/" + imageKey;
 
         UserImageEntity userImage = UserImageEntity.builder()
                 .user(user)
@@ -28,5 +30,14 @@ public class ImageDomainService {
         userImageAdapter.save(userImage);
 
         return imageUrl;
+    }
+
+    public UserImageEntity getUserImageByUserId(Long userId) {
+        return userImageAdapter.queryUserImageByUserId(userId);
+    }
+
+    public String deleteUserImage(UserImageEntity userImage) {
+        userImage.delete();
+        return userImage.getUri();
     }
 }
