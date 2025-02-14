@@ -57,7 +57,8 @@ jobs:
           DOCKERHUB_IMAGE_FULL_NAME: ${{ env.DOCKERHUB_USERNAME }}/${{ env.DOCKERHUB_IMAGE_NAME }}
         with:
           images: ${{ env.DOCKERHUB_IMAGE_FULL_NAME }}
-          tags: latest
+          tags: |
+            type=sha,prefix=
 
       # Docker 이미지 빌드, 도커허브 푸시
       - name: Build and Push Docker image
