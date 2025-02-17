@@ -27,6 +27,11 @@ public class UserImageEntity extends BaseTimeEntity {
 
     private String objectKey;
 
+    public void update(String uri, String objectKey) {
+        this.uri = uri;
+        this.objectKey = objectKey;
+    }
+
     public void delete() {
         this.uri = IMAGE_DOMAIN + "/" + USER_DEFAULT_IMAGE;
         this.objectKey = USER_DEFAULT_IMAGE;
