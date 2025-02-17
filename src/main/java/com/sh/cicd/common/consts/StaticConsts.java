@@ -23,6 +23,6 @@ public class StaticConsts {
             "gif", "image/gif",
             "webp", "image/webp"
     );
-    public static final String IMAGE_DOMAIN = "https://sh-test-server-bucket.s3.ap-northeast-2.amazonaws.com";
+    public static final String IMAGE_DOMAIN = "https://d3uocrdmdebrsy.cloudfront.net";
     public static final String USER_DEFAULT_IMAGE = "users/default-image.png";
 }
