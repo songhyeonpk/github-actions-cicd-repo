@@ -19,16 +19,9 @@ public class ImageDomainService {
     private final UserImageAdapter userImageAdapter;
 
     public String userImageUploadSuccess(Long userId, String imageKey) {
-        UserEntity user = userAdapter.queryUser(userId);
         String imageUrl = IMAGE_DOMAIN + "/" + imageKey;
-
-        UserImageEntity userImage = UserImageEntity.builder()
-                .user(user)
-                .uri(imageUrl)
-                .objectKey(imageKey)
-                .build();
-        userImageAdapter.save(userImage);
-
+        UserImageEntity userImage = userImageAdapter.queryUserImageByUserId(userId);
+        userImage.update(imageUrl, imageKey);
         return imageUrl;
     }
 
