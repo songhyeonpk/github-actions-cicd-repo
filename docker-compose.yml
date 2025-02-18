@@ -12,6 +12,8 @@ services:
     restart: always
     expose: 
       - "8080"
+    volumes:
+      - ./app-logs/errors:/logs/errors
     environment:
       - TZ=Asia/Seoul
     networks:
