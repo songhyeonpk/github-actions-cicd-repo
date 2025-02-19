@@ -59,3 +59,10 @@ spotless {
 		googleJavaFormat().aosp()	// google java format 적용
 	}
 }
+
+// pre-commit spotless check script
+tasks.register('updateGitHooks', Copy) {
+	from 'scripts/pre-commit'
+	into '.git/hooks'
+}
+compileJava.dependsOn updateGitHooks
