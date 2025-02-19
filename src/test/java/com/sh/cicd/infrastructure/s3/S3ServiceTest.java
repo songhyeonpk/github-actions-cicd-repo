@@ -1,7 +1,13 @@
 package com.sh.cicd.infrastructure.s3;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 import com.sh.cicd.common.utils.FileUtils;
 import com.sh.cicd.infrastructure.s3.dto.ImageUrlDto;
+import java.net.URI;
+import java.net.URL;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,29 +19,17 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.PresignedPutObjectRequest;
 import software.amazon.awssdk.services.s3.presigner.model.PutObjectPresignRequest;
 
-import java.net.URI;
-import java.net.URL;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 public class S3ServiceTest {
 
-    @Mock
-    private S3Properties s3Properties;
+    @Mock private S3Properties s3Properties;
 
-    @Mock
-    private S3Presigner s3Presigner;
+    @Mock private S3Presigner s3Presigner;
 
-    @Mock
-    private S3Client s3Client;
+    @Mock private S3Client s3Client;
 
-    @Mock
-    private FileUtils fileUtils;
+    @Mock private FileUtils fileUtils;
 
-    @InjectMocks
-    private S3Service s3Service;
+    @InjectMocks private S3Service s3Service;
 
     @BeforeEach
     void setUp() {
@@ -45,7 +39,7 @@ public class S3ServiceTest {
 
     @Test
     @DisplayName("pre-signed URL 발급 요청")
-    void getPresignedUrlForUser() throws Exception{
+    void getPresignedUrlForUser() throws Exception {
         // Given
         String filename = "test-image.jpg";
         String fileExtension = "jpg";

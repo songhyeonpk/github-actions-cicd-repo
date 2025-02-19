@@ -8,6 +8,6 @@ public class UserNotFoundException extends BaseCodeException {
         super(errorCode);
     }
 
-    public static final UserNotFoundException USER_NOT_FOUND_EXCEPTION
-            = new UserNotFoundException(UserErrorCode.USER_NOT_FOUND);
+    public static final UserNotFoundException USER_NOT_FOUND_EXCEPTION =
+            new UserNotFoundException(UserErrorCode.USER_NOT_FOUND);
 }

@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 public enum SuccessResults {
-
     OK(HttpStatus.OK.value(), "리소스 조회에 성공했습니다."),
     CREATED(HttpStatus.CREATED.value(), "리소스 생성에 성공했습니다."),
     UPDATED(HttpStatus.OK.value(), "리소스 업데이트에 성공했습니다."),
