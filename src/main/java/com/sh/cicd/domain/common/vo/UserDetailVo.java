@@ -3,9 +3,8 @@ package com.sh.cicd.domain.common.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sh.cicd.domain.user.domain.UserEntity;
 import com.sh.cicd.domain.user.domain.UserStatus;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
+import lombok.Getter;
 
 @Getter
 public class UserDetailVo {
@@ -20,7 +19,12 @@ public class UserDetailVo {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm", shape = JsonFormat.Shape.STRING)
     public LocalDateTime updatedAt;
 
-    UserDetailVo(Long id, String nickname, UserStatus status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    UserDetailVo(
+            Long id,
+            String nickname,
+            UserStatus status,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt) {
         this.id = id;
         this.nickname = nickname;
         this.status = status;
@@ -29,6 +33,11 @@ public class UserDetailVo {
     }
 
     public static UserDetailVo from(UserEntity user) {
-        return new UserDetailVo(user.getId(), user.getNickname(), user.getStatus(), user.getCreatedAt(), user.getUpdatedAt());
+        return new UserDetailVo(
+                user.getId(),
+                user.getNickname(),
+                user.getStatus(),
+                user.getCreatedAt(),
+                user.getUpdatedAt());
     }
 }

@@ -1,11 +1,11 @@
 package com.sh.cicd.domain.image.domain;
 
+import static com.sh.cicd.common.consts.StaticConsts.*;
+
 import com.sh.cicd.domain.common.BaseTimeEntity;
 import com.sh.cicd.domain.user.domain.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
-
-import static com.sh.cicd.common.consts.StaticConsts.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

@@ -13,7 +13,8 @@ public class UserAdapter {
     private final UserRepository userRepository;
 
     public UserEntity queryUser(Long id) {
-        return userRepository.findById(id)
+        return userRepository
+                .findById(id)
                 .orElseThrow(() -> UserNotFoundException.USER_NOT_FOUND_EXCEPTION);
     }
 

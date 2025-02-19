@@ -17,7 +17,6 @@ public class GlobalExceptionHandler {
         ErrorReason errorReason = ErrorReason.of(errorCode.getStatus(), errorCode.getReason());
         ErrorResponse errorResponse = ErrorResponse.of(errorReason);
 
-        return ResponseEntity.status(errorReason.getStatus())
-                .body(errorResponse);
+        return ResponseEntity.status(errorReason.getStatus()).body(errorResponse);
     }
 }

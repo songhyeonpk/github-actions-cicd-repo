@@ -11,8 +11,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableConfigurationProperties(S3Properties.class)
 public class GithubActionsCicdApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(GithubActionsCicdApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(GithubActionsCicdApplication.class, args);
+    }
 }

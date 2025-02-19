@@ -8,6 +8,6 @@ public class UserImageNotFoundException extends BaseCodeException {
         super(errorCode);
     }
 
-    public static final UserImageNotFoundException USER_IMAGE_NOT_FOUND
-            = new UserImageNotFoundException(UserImageErrorCode.USER_IMAGE_NOT_FOUND);
+    public static final UserImageNotFoundException USER_IMAGE_NOT_FOUND =
+            new UserImageNotFoundException(UserImageErrorCode.USER_IMAGE_NOT_FOUND);
 }

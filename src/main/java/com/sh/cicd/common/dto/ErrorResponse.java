@@ -1,7 +1,5 @@
 package com.sh.cicd.common.dto;
 
-import com.sh.cicd.common.exception.BaseErrorCode;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter

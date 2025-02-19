@@ -8,6 +8,6 @@ public class UserAlreadyException extends BaseCodeException {
         super(errorCode);
     }
 
-    public static final UserAlreadyException USER_ALREADY_EXCEPTION
-            = new UserAlreadyException(UserErrorCode.USER_ALREADY);
+    public static final UserAlreadyException USER_ALREADY_EXCEPTION =
+            new UserAlreadyException(UserErrorCode.USER_ALREADY);
 }

@@ -1,14 +1,13 @@
 package com.sh.cicd.domain.image.service;
 
+import static com.sh.cicd.common.consts.StaticConsts.IMAGE_DOMAIN;
+
 import com.sh.cicd.domain.image.adapter.UserImageAdapter;
 import com.sh.cicd.domain.image.domain.UserImageEntity;
 import com.sh.cicd.domain.user.adapter.UserAdapter;
-import com.sh.cicd.domain.user.domain.UserEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import static com.sh.cicd.common.consts.StaticConsts.IMAGE_DOMAIN;
 
 @Service
 @RequiredArgsConstructor

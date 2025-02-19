@@ -11,9 +11,6 @@ public class ImageUrlDto {
     private String key;
 
     public static ImageUrlDto of(String url, String key) {
-        return ImageUrlDto.builder()
-                .url(url)
-                .key(key)
-                .build();
+        return ImageUrlDto.builder().url(url).key(key).build();
     }
 }

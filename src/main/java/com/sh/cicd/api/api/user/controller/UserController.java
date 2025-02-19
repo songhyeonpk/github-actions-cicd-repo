@@ -1,7 +1,7 @@
 package com.sh.cicd.api.api.user.controller;
 
-import com.sh.cicd.api.api.user.usecase.ReadUserUseCase;
 import com.sh.cicd.api.api.user.dto.SaveUserRequest;
+import com.sh.cicd.api.api.user.usecase.ReadUserUseCase;
 import com.sh.cicd.api.api.user.usecase.UpdateUserUseCase;
 import com.sh.cicd.api.config.response.ApiResponse;
 import com.sh.cicd.api.config.response.SuccessResults;
@@ -21,16 +21,14 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse<UserInfoVo> createUser(
-            @RequestBody SaveUserRequest request) {
+    public ApiResponse<UserInfoVo> createUser(@RequestBody SaveUserRequest request) {
         UserInfoVo vo = updateUserUseCase.saveUser(request);
         return ApiResponse.success(SuccessResults.CREATED, vo);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public ApiResponse<UserDetailVo> getUser(
-            @RequestParam Long id) {
+    public ApiResponse<UserDetailVo> getUser(@RequestParam Long id) {
         UserDetailVo vo = readUserUseCase.findUserDetailById(id);
         return ApiResponse.success(SuccessResults.OK, vo);
     }

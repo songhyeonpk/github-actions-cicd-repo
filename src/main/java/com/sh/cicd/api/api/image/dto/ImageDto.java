@@ -10,8 +10,6 @@ public class ImageDto {
     private String imageUrl;
 
     public static ImageDto from(String imageUrl) {
-        return ImageDto.builder()
-                .imageUrl(imageUrl)
-                .build();
+        return ImageDto.builder().imageUrl(imageUrl).build();
     }
 }
