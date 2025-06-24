@@ -49,7 +49,7 @@ jobs:
                   "color": "#36a64f",
                   "title": "✅ 새로운 PR 생성되었습니다.(#${{ github.event.pull_request.number }}) ",
                   "title_link": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}",
-                  "text": "코드 리뷰 부탁드립니다."
+                  "text": "코드 리뷰 부탁드립니다.",
                   "footer": "Workflow: ${{ github.workflow }}"
                 }
               ]
