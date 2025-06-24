@@ -125,6 +125,6 @@ jobs:
                 text:
                   type: mrkdwn
                   text: >
-                    ${{ jobs.status == 'success'
+                    ${{ job.status == 'success'
                       && '✅ 배포 성공'
                       || '❌ 배포 실패' }}
