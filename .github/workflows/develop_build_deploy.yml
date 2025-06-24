@@ -125,13 +125,9 @@ jobs:
                 text:
                   type: mrkdwn
                   text: "✅ 배포 완료 알림"
-              - type: section  
-                text:
-                  type: mrkdwn
-                  text: "🔗 <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>"
               - type: section
                 fields:
                   - type: mrkdwn
-                    text: "*이미지:* ${{ steps.metadata.outputs.tags }}"
+                    text: "*이미지:* `${{ steps.metadata.outputs.tags }}`"
                   - type: mrkdwn
                     text: "*실행 로그:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
