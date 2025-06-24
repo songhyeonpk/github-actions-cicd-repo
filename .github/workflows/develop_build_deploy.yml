@@ -132,6 +132,6 @@ jobs:
               - type: section
                 fields:
                   - type: mrkdwn
-                    text: "*이미지:* ${{ steps.metadata.outputs.tags }}
+                    text: "*이미지:* ${{ steps.metadata.outputs.tags }}"
                   - type: mrkdwn
                     text: "*실행 로그:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
