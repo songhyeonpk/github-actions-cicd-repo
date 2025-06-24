@@ -111,3 +111,20 @@ jobs:
             echo "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
             docker compose up -d
             docker image prune -a -f
+
+      - name: Send to slack
+        uses: slackapi/slack-github-action@v2.1.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "Deploy Result"
+            blocks: 
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: >
+                    ${{ jobs.status == 'success'
+                      && '✅ 배포 성공'
+                      || '❌ 배포 실패' }}
