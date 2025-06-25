@@ -14,7 +14,7 @@ jobs:
           if [[ "${{ github.event.review.state }}" == "approved" ]]; then
             echo "state=✅ PR 승인 알림" >> $GITHUB_OUTPUT
           elif [[ "${{ github.event.review.state }}" == "changes_requested" ]]; then
-            echo "state=❌ PR 변경 요청 알림" >> $GITHUB_OUTPUT
+            echo "state=🛠️ PR 변경 요청 알림" >> $GITHUB_OUTPUT
           else
             echo "state=💬 PR 코멘트 알림" >> $GITHUB_OUTPUT
           fi
