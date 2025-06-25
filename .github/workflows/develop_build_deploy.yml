@@ -128,7 +128,7 @@ jobs:
               - type: section
                 text:
                   type: mrkdwn
-                  text: "*로그:* 🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
+                  text: "*실행 로그:* 🔗 <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
               - type: context
                 elements:
                   - type: mrkdwn
