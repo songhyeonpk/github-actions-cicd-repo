@@ -38,13 +38,13 @@ jobs:
                   type: mrkdwn
                   text: "> _${{ github.event.review.body }}_"
               - type: section
-                fields:
+                text:
+                  type: mrkdwn
+                  text: "*PR:* 🔗 <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>"
+              - type: context
+                elements:
                   - type: mrkdwn
                     text: "*리뷰 상태:* `${{ github.event.review.state }}`"
                   - type: mrkdwn
                     text: "*리뷰어:* ${{ github.event.review.user.login }}"
-              - type: context
-                elements:
-                  - type: mrkdwn
-                    text: "*PR:* 🔗 <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>"
               - type: divider
