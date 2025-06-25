@@ -1,0 +1,50 @@
+name: pull request Review notify
+
+on:
+  pull_request_review:
+    types: [ "submitted" ]
+
+jobs:
+  notify_reveiw:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set review state
+        id: set-state
+        run: |
+          if [[ "${{ github.event.review.state }}" == "approved" ]]; then
+            echo "state=✅ PR 승인 알림" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event.review.state }}" == "changes_requested" ]]; then
+            echo "state=❌ PR 변경 요청 알림" >> $GITHUB_OUTPUT
+          else
+            echo "state=💬 PR 코멘트 알림" >> $GITHUB_OUTPUT
+          fi
+
+      # 슬랙으로 PR 리뷰 알림 전송
+      - name: Send PR Review slack notification
+        uses: slackapi/slack-github-action@v2.1.0
+        with:
+          method: chat.postMessage
+          token: ${{ secrets.SLACK_BOT_TOKEN }}
+          payload: |
+            channel: ${{ secrets.SLACK_CHANNEL_ID }}
+            text: "Add PR review"
+            blocks:
+              - type: section
+                text: 
+                  type: mrkdwn
+                  text: "*${{ steps.set-state.outputs.state }} (<${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}>)*"
+              - type: section
+                text:
+                  type: mrkdwn
+                  text: "> _${{ github.event.review.body }}_"
+              - type: section
+                fields:
+                  - type: mrkdwn
+                    text: "*리뷰 상태:* `${{ github.event.review.state }}`"
+                  - type: mrkdwn
+                    text: "*리뷰어:* ${{ github.event.review.user.login }}"
+              - type: context
+                elements:
+                  - type: mrkdwn
+                    text: "*PR:* 🔗 <${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>"
+              - type: divider

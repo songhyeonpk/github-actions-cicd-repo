@@ -124,10 +124,16 @@ jobs:
               - type: section
                 text:
                   type: mrkdwn
-                  text: "✅ 배포 완료 알림(${{ github.event.head_commit.id }})"
+                  text: "*✅ 배포 완료 알림*"
               - type: section
                 fields:
                   - type: mrkdwn
-                    text: "*커밋:* <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|`${{ github.sha }}`>"
+                    text: "*브랜치:* `${{ github.ref_name }}`"
                   - type: mrkdwn
-                    text: "*실행 로그:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}>"
+                    text: "*커밋:* `${{ github.sha.substr(0, 7) }}`"
+              - type: context
+                elements:
+                  - type: mrkdwn
+                    text: "*커밋 링크:* <https://github.com/${{ github.repository }}/commit/${{ github.sha }}|🔗 ${{ github.sha.substr(0, 7) }}>"
+                  - type: mrkdwn
+                    text: "*실행 로그:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|🔗 ${{ github.run_id }}>"
