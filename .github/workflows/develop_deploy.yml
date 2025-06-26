@@ -45,7 +45,7 @@ jobs:
               - type: section
                 text:
                   type: mrkdwn
-                  text: "*✅ 배포 완료 알림*"
+                  text: "✅ *배포 완료 알림*"
               - type: section
                 text:
                   type: mrkdwn
