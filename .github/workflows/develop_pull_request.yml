@@ -54,7 +54,7 @@ jobs:
               - type: section
                 text:
                   type: mrkdwn
-                  text: "*📌 PR 이벤트 알림 (<${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}>)*"
+                  text: "${{ secrets.SLACK_GROUP_MENTION }}\n\n📌 *PR 이벤트 알림 (<${{ github.event.pull_request.html_url }}|#${{ github.event.pull_request.number }}>)*"
               - type: section
                 text:
                   type: mrkdwn
